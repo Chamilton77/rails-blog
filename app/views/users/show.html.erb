@@ -2,6 +2,44 @@
 <p>Find me in app/views/users/show.html.erb</p>
 
 the user is <%= @user.fname %>
-
+<br>
+<a href="/newpost">Create Post</a>
+<br>
 <a href="/settings">Edit Account</a>
+<br>
 <a href="/login">Logout</a>
+<br>
+<a href="/find_frineds">Find friends</a>
+<br>
+<a href="/friends">Your Friends</a>
+<br>
+
+<% @user.posts.each do |post| %>
+	<div>
+		<p>
+			<%= render 'user', user: @user %>
+			<br>
+			<%= post.content  %> 
+			<br>
+			<%= post.created_at.strftime('%B, %d, %y') %>
+		</p>
+		<%= link_to "Comment", new_comment_path(:post_id => post.id), :class => "btn" %>
+
+		<%= link_to "Edit Post", edit_post_path(post)%>
+
+		<%= link_to "Delete Post", post_path(post), method: :delete %>
+		<br>
+		<% post.comments.each do |comment| %>
+			<p>
+				<%= comment.content %>
+				<br>
+				<%= comment.created_at.strftime('%B, %d, %y') %>
+			</p>
+			<%= link_to "Edit comment", edit_comment_path(comment)%>
+
+			<%= link_to "Delete Comment", comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+		<% end %>
+	</div>
+<% end %>
+
+
