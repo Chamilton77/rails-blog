@@ -9,7 +9,7 @@ the user is <%= @user.fname %>
 <br>
 <a href="/login">Logout</a>
 <br>
-<a href="/find_frineds">Find friends</a>
+<a href="/find_friends">Find friends</a>
 <br>
 <a href="/friends">Your Friends</a>
 <br>
@@ -23,7 +23,7 @@ the user is <%= @user.fname %>
 			<br>
 			<%= post.created_at.strftime('%B, %d, %y') %>
 		</p>
-		<%= link_to "Comment", new_comment_path(:post_id => post.id), :class => "btn" %>
+		<%= link_to "Comment", new_comment_path(:post_id => post.id) %>
 
 		<%= link_to "Edit Post", edit_post_path(post)%>
 

@@ -1,0 +1,11 @@
+<h1>Userfriends#show</h1>
+<p>Find me in app/views/userfriends/show.html.erb</p>
+
+
+
+<% @friends.each do |friend| %>
+	<h1><%= friend.friend.fname %><h1>
+	<br>
+	<%= link_to("unfollow", userfriend_path(friend), method: :delete ) %>
+	<%= link_to("visit page", user_path(friend.friend)) %>
+<% end %>
