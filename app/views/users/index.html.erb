@@ -1,9 +1,10 @@
-<%= header('Create an account!') %>
 
-<p>Find me in app/views/users/index.html.erb</p>
-
-<%= render 'user_form' %>
-
-<a href= "/login"> Sign in </a>
-
+<% @users.each do |user| %>
+	<h1><%= user.fname %><h1>
+	<%= form_for Userfriend.new do |f| %>
+	<%= hidden_field_tag('friend_id', user.id) %>
+	<%= f.submit %>
+	<% end %>
+	<br>
+<% end %>
 

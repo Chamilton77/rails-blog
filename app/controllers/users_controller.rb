@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def new
-
+    @user = User.new
   end
 
   def edit
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = User.new
+    @users = User.all
   end
 
   def update
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def create
