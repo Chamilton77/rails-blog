@@ -7,6 +7,7 @@ class UserfriendsController < ApplicationController
   end
 
   def create
+    #This takes the current user and adds another user on to their friends page with the friend id
     @user = current_user
     @userfriend = current_user.userfriends.new(friend_id: params[:friend_id])
     @userfriend.save
@@ -17,6 +18,7 @@ class UserfriendsController < ApplicationController
   end
 
   def destroy
+    #this deletes the friend from the Users account
     @user = current_user
     @friend = Userfriend.find(params[:id])
     @friend.destroy
@@ -24,6 +26,7 @@ class UserfriendsController < ApplicationController
   end
 
   def show
+    #shows all of the friends that the user has
     @friends = current_user.userfriends
   end
 
