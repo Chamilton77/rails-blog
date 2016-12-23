@@ -1,13 +1,16 @@
 class PostsController < ApplicationController
   def new
+    #creates a new post instance variable
     @post = Post.new
   end
 
   def edit
+    #this finds a post by its id
     @post = Post.find(params[:id])
   end
 
   def destroy
+    #this takes the information from the post and deletes it 
     @user = current_user
     @post = Post.find(params[:id])
     @post.destroy
@@ -18,6 +21,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    #saves the data to the database that comes through the edit part of the controller 
     @user = current_user
     @post = Post.find(params[:id])
     @post.update_attributes(content: params[:post][:content])
@@ -28,6 +32,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    # creates a new post from the data from the table in the new section
     @user=current_user
     @post = @user.posts.new(post_params)
     if @post.save
